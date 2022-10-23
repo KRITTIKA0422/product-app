@@ -1,28 +1,30 @@
-.movie-specs{
+.product-specs{
   display:flex;
   align-items: center;
   justify-content: space-between;
 }
-.movie-container{
+.product-container{
   width:340px;
+  margin: 2vw;
 }
-.movie-poster{
+.product-poster{
   width: 340px;
   height: 600px;
   object-fit: cover;
 }
-.movie-name{
+.product-name{
   font-size: 24px;
   margin: 0;
 }
-.movie-summary{
+.product-summary{
   margin-top: 0;
 }
-.movie-rating{
+.product-company{
   font-size: 18px;
 }
-.movie-List-container{
+.product-list-container{
   display: flex;
+  flex-direction: row;
+  align-items: space-evenly;
   flex-wrap: wrap;
-  justify-content: space-evenly;
 }
