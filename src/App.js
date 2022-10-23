@@ -1,39 +1,32 @@
 import "./App.css";
-import {useState} from "react";
-import { useEffect } from "react";
-import { API } from "./global";
-
+import Productdisplay from "./Productdisplay";
+import Productform from "./Productform";
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Button from '@mui/material/Button';
+import { Routes, Route } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 // App - component
  function App() {
+  const navigate = useNavigate();
+  return(
+  <div className="App">
+  <nav className="routing">
+  <AppBar position="static">
+        <Toolbar>
+          <Button color="inherit" onClick={()=>navigate("/")}>PRODUCTS</Button>
+          <Button color="inherit" onClick={()=>navigate("/productform")}>ADD PRODUCT</Button>
+        </Toolbar>
+      </AppBar>
+      </nav> 
 
-   const[products,setProducts]=useState([]);
-   useEffect(()=>{
-     fetch(`${API}/products`)
-     .then((data)=>data.json())
-     .then((p)=>setProducts (p));
-   },[]);
-   console.log (products);
-   return (
-     <div className="App">
-    <div className="product-list-container">{products.map((p)=>(<Mobile product ={p}/>))}</div>
-     </div>
- );
- }
-
-function Mobile({product}){
-  
-  const [show,setShow]= useState(true);
-return(
-  <div className="product-container">
-    <img src={product.img} alt={product.model} className="product-poster"></img>
-    <div className="product-specs"><h2 className="product-name">{product.model}</h2>
-    <p  className="product-company">{product.company}</p></div>
-    <button onClick={()=>setShow(!show)}>Description</button>
-    {show?<p className="product-summary">{product.summary}</p>:""}   
+  <Routes>
+  <Route path="/" element={<Productdisplay />} />
+  <Route path="/productform" element={<Productform />} />
+</Routes> 
   </div>
 );
 }
 
 export default App;
-
